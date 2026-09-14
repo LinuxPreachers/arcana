@@ -18,6 +18,7 @@ Por ejemplo, si se consulta repetidamente el elemento 40, después de su primera
 ### Definición / propiedades
 
 Un Splay Tree mantiene las propiedades fundamentales de un BST:
+- Cada nodo posee como máximo un hijo izquierdo y uno derecho.
 - Todos los valores del subárbol izquierdo de un nodo son menores que él.
 - Todos los valores del subárbol derecho son mayores que él.
 
@@ -64,7 +65,7 @@ Las operaciones fundamentales son:
 La diferencia más importante está entre peor caso individual y costo amortizado.
 
 ### Detalles operativos
-Una operación aislada puede recorrer un árbol prácticamente lineal y costar $O(n)$. Sin embargo, Sleator y Tarjan demostraron que para una secuencia de operaciones sobre un árbol de n nodos, las operaciones estándar tienen un costo amortizado de O(log n) por operación.
+Una operación aislada puede recorrer un árbol prácticamente lineal y costar $O(n)$. Sin embargo, Sleator y Tarjan demostraron que para una secuencia de operaciones sobre un árbol de n nodos, las operaciones estándar tienen un costo amortizado de $O(log\space n)$ por operación.
 
 Esto significa que no debemos interpretar $O(log\space n)$ como una garantía de que cada búsqueda demora $O(log\space n)$. Es una garantía sobre el comportamiento acumulado de una secuencia de operaciones.
 
@@ -74,7 +75,7 @@ El espacio requerido es $O(n)$ porque se almacena un nodo por elemento. Además,
 
 ### Idea de implementación
 
-Una implementación puede basarse en tres operaciones de rotación: rotación a la derecha o rotación a la izquierda. A partir de estas rotaciones, combinándolas podríamos cubrir los casos estrella de este algoritmo: Zig, Zig-Zig y Zig-Zag (cuyas 3 definiciones se explicaron más arriba).
+Una implementación puede basarse en dos operaciones de rotación: rotación a la derecha o rotación a la izquierda. A partir de estas rotaciones, combinándolas podríamos cubrir los casos estrella de este algoritmo: Zig, Zig-Zig y Zig-Zag (cuyas 3 definiciones se explicaron más arriba).
 
 ### Invariantes
 - El árbol debe continuar siendo un BST después de cada operación.
@@ -104,15 +105,16 @@ class Node:
     y.left = x
     return y
 
-  # Caso Zig: El nodo a subir es hijo directo de la raíz 'parent'. Realiza una sola rotación.
+  # Caso Zig: El nodo a subir es hijo directo de la raíz 'parent'. 
+  # Realiza una sola rotación.
   def zig(parent: Node, is_left: bool) -> Node:
-   
    if is_left:
       return rotate_right(parent)
    else:
       return rotate_left(parent)
 
-  # Caso Zig-Zig: El nodo y su padre están alineados en la misma dirección. Primero se rota el abuelo y luego el padre.
+  # Caso Zig-Zig: El nodo y su padre están alineados en la misma dirección. 
+  # Primero se rota el abuelo y luego el padre.
   def zig_zig(grandparent: Node, is_left: bool) -> Node:
    if is_left:
       # Alineados a la izquierda (Izq-Izq)
@@ -123,9 +125,9 @@ class Node:
       grandparent = rotate_left(grandparent)
       return rotate_left(grandparent)
 
-  # Caso Zig-Zag: El nodo y su padre están en direcciones opuestas. Se rota el padre y luego el abuelo.
+  # Caso Zig-Zag: El nodo y su padre están en direcciones opuestas. 
+  # Se rota el padre y luego el abuelo.
   def zig_zag(grandparent: Node, is_left_right: bool) -> Node:
-   
    if is_left_right:
       # Izquierda-Derecha
        grandparent.left = rotate_left(grandparent.left)
@@ -196,8 +198,8 @@ Desventajas:
 ### Variantes
 
 Existen dos estrategias principales para realizar el splay:
-- Bottom-up: primero se realiza la búsqueda y luego se sube el nodo mediante las operaciones Zig, Zig-Zig y Zig-Zag.
-- Top-down: la búsqueda y reorganización se realizan simultáneamente, separando temporalmente los nodos menores y mayores que el elemento buscado.
+- Bottom-up: Primero se realiza la búsqueda y luego se sube el nodo mediante las operaciones Zig, Zig-Zig y Zig-Zag.
+- Top-down: La búsqueda y reorganización se realizan simultáneamente, separando temporalmente los nodos menores y mayores que el elemento buscado.
 
 La variante top-down puede simplificar ciertos aspectos de implementación al evitar referencias explícitas a los padres.
 
