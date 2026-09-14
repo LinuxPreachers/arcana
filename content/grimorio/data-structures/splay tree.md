@@ -33,13 +33,13 @@ Las rotaciones modifican la forma del árbol, pero conservan el orden del BST.
 
 Cada nodo puede representarse de forma sencilla:
 
-![]()
+![](/attachments/grimorio/data-structures/splay-tree-nodos.svg)
 
 A diferencia de árboles auto-balanceados como AVL o Red-Black, el nodo no necesita almacenar un factor de balance ni un color adicional.
 
 Una representación conceptual de un acceso podría ser:
 
-![]()
+![](/attachments/grimorio/data-structures/splay-tree-acceso.svg)
 
 ## 2. Operaciones y complejidad
 
