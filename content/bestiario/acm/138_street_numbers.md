@@ -82,6 +82,8 @@ Tomemos el primer par: h = 6, N = 8.
 
 Verificación con la fórmula: 2 × 6² = 72 y 8 × 9 = 72
 
+![Calle 1 a 8 con equilibrio en h igual a 6](138-street-numbers-ejemplo.svg)
+
 ---
 
 ## Por dónde empezar

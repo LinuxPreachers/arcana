@@ -66,7 +66,7 @@ def _resolver(target: int, map: dict) -> int:
 
 ### Traza de ejemplo
 
-![](arbol-top-down.svg)
+![](0818-arbol-top-down.svg)
 La imagen ilustra el árbol de recursividad generado al ejecutar el algoritmo para `target = 6`.
 
 **Explicación del árbol de recursividad:**
