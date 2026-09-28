@@ -35,7 +35,9 @@ Las rotaciones modifican la forma del árbol, pero conservan el orden del [[grim
 
 Cada nodo puede representarse de forma sencilla:
 
-![](/attachments/grimorio/data-structures/splay-tree-nodos.svg)
+<div style="display: flex; justify-content: center">
+  <img src="/attachments/grimorio/data-structures/splay-tree-nodos.svg">
+</div>
 
 A diferencia de árboles auto-balanceados como [[grimorio/data-structures/avl-tree|AVL]] o [[grimorio/data-structures/red-black-tree|Red-Black]], el nodo no necesita almacenar un factor de balance ni un color adicional.
 
